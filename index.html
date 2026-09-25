@@ -1,268 +1,255 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kartik Pawar - Resume</title>
-    <style>
-        :root {
-            --dark-blue: #001f3f;
-            --light-blue: #dce7f5;
-            --border-blue: #1c3b68;
-            --text-color: #111;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kartik Pawar - Resume</title>
+<style>
+  :root {
+    --ink: #000;
+    --muted: #444;
+    --rule: #000;
+    --bg: #fff;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  body {
+    margin: 0;
+    padding: 24px 16px;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    line-height: 1.5;
+    font-size: 15.5px;
+  }
+  a { color: var(--ink); text-decoration: underline; word-break: break-word; }
 
-        body {
-            font-family: 'Times New Roman', Times, serif;
-            font-size: 16px;
-            line-height: 1.4;
-            color: var(--text-color);
-            margin: 0;
-            padding: 20px;
-            background-color: #f0f0f0;
-        }
+  .page { max-width: 780px; margin: 0 auto; }
 
-        a {
-            text-decoration: underline;
-            color: #000;
-        }
+  header { text-align: center; margin-bottom: 18px; }
+  header h1 {
+    font-size: clamp(1.6rem, 5vw, 2.2rem);
+    letter-spacing: 2px;
+    margin: 0 0 6px 0;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  header .role {
+    font-style: italic;
+    font-size: 0.95rem;
+    margin: 0 0 10px 0;
+    color: var(--muted);
+  }
+  button{
+    width:100%;
+    background: #fff;
+    padding:10px 15px;
+    border-radius:12px;
+    font-family:'Times New Roman', Times, serif;    
+    font-size:large;
+  }
+  .contact-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    font-size: 0.85rem;
+  }
 
-        .resume-page {
-            max-width: 850px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 40px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
+  .section-title {
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid var(--rule);
+    padding-bottom: 3px;
+    margin: 22px 0 10px 0;
+  }
+  section:first-of-type .section-title { margin-top: 0; }
 
-        header h1.title {
-            font-size: 3rem;
-            letter-spacing: 5px;
-            color: #0d1b3e;
-            margin: 0 0 10px 0;
-            text-align: center;
-            text-transform: uppercase;
-            font-weight: bold;
-        }
+  p { margin: 0 0 8px 0; }
 
-        .contact-row {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            font-size: 14px;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-        }
+  ul { margin: 4px 0 0 0; padding-left: 20px; }
+  li { margin-bottom: 4px; }
 
-        .connect {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        } 
+  .entry { margin-bottom: 12px; }
+  .entry:last-child { margin-bottom: 0; }
+  .entry-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 4px 12px;
+  }
+  .entry-title { font-weight: bold; }
+  .entry-org { font-style: italic; }
+  .entry-date {
+    font-size: 0.85rem;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .stack {
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-top: 4px;
+  }
 
-        .section-bar {
-            background-color: var(--light-blue);
-            border-bottom: 2px solid var(--border-blue);
-            color: #000;
-            padding: 4px 10px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            margin: 15px 0 10px 0;
-            text-transform: UPPERCASE;
-            letter-spacing: 1px;
-        }
+  .cert-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 4px;
+  }
+  .cert-row .date-col {
+    font-size: 0.85rem;
+    color: var(--muted);
+    white-space: nowrap;
+  }
 
-        .content-block {
-            margin-left: 5px;
-            margin-right: 5px;
-        }
+  .skills-list { margin: 0; padding: 0; list-style: none; }
+  .skills-list li { margin-bottom: 4px; }
+  .skills-list b { font-weight: bold; }
 
-        .item-block {
-            margin-bottom: 12px;
-        }
+  .actions { max-width: 780px; margin: 18px auto 0 auto; }
+  button#printBtn {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #000;
+    background: #fff;
+    color: #000;
+    font-family: Georgia, serif;
+    font-size: 0.95rem;
+    cursor: pointer;
+  }
+  button#printBtn:hover { background: #f2f2f2; }
 
-        ul {
-            padding-left: 20px;
-            margin: 4px 0;
-        }
+  @media print {
+    body { padding: 0; }
+    .actions { display: none; }
+  }
 
-        li {
-            margin-bottom: 3px;
-        }
-
-        .sub-text {
-            font-style: italic;
-        }
-
-        .cert-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 3px;
-        }
-
-        .date-col {
-            text-align: right;
-            white-space: nowrap;
-        }
-
-        b, strong {
-            color: #000;
-        }
-
-        button {
-            padding: 12px;
-            text-align: center;
-            margin: 20px auto 0 auto;
-            border: none;
-            border-radius: 5px;
-            background: #d5ddff;
-            font-size: 18px;
-            display: block;  
-            width: 100%;
-            max-width: 850px;
-            font-family: 'Times New Roman', Times, serif;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        button:hover {
-            border: 1px solid #0f0474;
-            background: #cbd5fe;
-        }
-
-        @media (max-width: 600px) {
-            body { 
-                padding: 10px;
-            }
-            .resume-page { 
-                padding: 15px; 
-            }
-            header h1.title { 
-                font-size: 2rem; 
-            }
-            .contact-row {
-                flex-direction: column;
-                align-items: center;
-                gap: 5px;
-            }
-            .cert-row {
-                flex-direction: column;
-            }
-            .date-col {
-                text-align: left;
-            }
-        }
-    </style>
+  @media (max-width: 480px) {
+    body { font-size: 14.5px; padding: 16px 12px; }
+    .contact-row { flex-direction: column; align-items: center; gap: 3px; }
+    .entry-date, .date-col { white-space: normal; }
+    .cert-row { flex-direction: column; }
+  }
+</style>
 </head>
 <body>
 
-<div class="resume-page">
-    <header>
-        <h1 class="title">KARTIK PAWAR</h1>
-        <div class="contact-row">
-            <span class="connect">📞 9685467114</span>
-            <span class="connect">✉️ kp346949@gmail.com</span>
-            <span class="connect">🌐 <a href="https://www.linkedin.com/in/kartik-pawar346949" target="_blank">www.linkedin.com/in/kartik-pawar346949</a></span>
-            <span class="connect">🌐 <a href="https://kartikpawar34.github.io/updatePortFolio/" target="_blank">https://kartikpawar34.github.io/updatePortFolio/</a></span>
-        </div>
-    </header>
-
-    <div class="section-bar">OBJECTIVE</div>
-    <div class="content-block">
-        Aspiring IT professional seeking an entry-level role in IT services. Familiar with front-end development and eager to strengthen skills in application development and enterprise solutions. Committed to problem-solving, collaboration, and continuous learning, with growing interest in cloud, AI, and automation technologies.
+<div class="page">
+  <header>
+    <h1>Kartik Pawar</h1>
+    <p class="role">Aspiring Full-Stack Developer (MERN) | AI/ML Enthusiast</p>
+    <div class="contact-row">
+      <span>9685467114</span>
+      <span>kp346949@gmail.com</span>
+      <span><a href="https://www.linkedin.com/in/kartik-pawar346949" target="_blank" rel="noopener">linkedin.com/in/kartik-pawar346949</a></span>
+      <span><a href="https://kartikpawar34.github.io/updatePortFolio/" target="_blank" rel="noopener">Portfolio</a></span>
     </div>
+  </header>
 
-    <div class="section-bar">EDUCATION</div>
-    <div class="content-block">
-        <ul>
-            <li><b>B.Tech in Computer Science and Design (CSD)</b> Gyan Ganga Institute of Technology and Sciences, Jabalpur <b>2022 – 2026 | CGPA: 8.32 (till date)</b></li>
-            <li><b>Senior Secondary (12th)</b>, SVDJ Gurukul School, Jabalpur <b>Year: 2022 | Percentage: 67%</b></li>
-            <li><b>Secondary (10th)</b>, St. Augustine School, Jabalpur <b>Year: 2020 | Percentage: 71%</b></li>
-        </ul>
+  <section>
+    <h2 class="section-title">Objective</h2>
+    <p>Computer Science and Design graduate with hands-on experience building full-stack web applications using React, Node.js/Django, and REST APIs, alongside applied AI/ML projects (Digital Image Processing, Generative AI integrations). Seeking an entry-level Full-Stack Developer / Software Engineer role to build scalable, AI-integrated web applications and grow within a collaborative engineering team.</p>
+  </section>
+
+  <section>
+    <h2 class="section-title">Skills</h2>
+    <ul class="skills-list">
+      <li><b>Front-End:</b> HTML5, CSS3, JavaScript (ES6+), React.js, Bootstrap</li>
+      <li><b>Back-End &amp; APIs:</b> Node.js, Express.js, Python, Flask, Django REST Framework, REST API design</li>
+      <li><b>Databases:</b> MongoDB, PostgreSQL, PostgreSQL/PostGIS</li>
+      <li><b>Cloud, CRM &amp; AI:</b> Microsoft Azure fundamentals, Salesforce Administration, Generative AI (Gemini API), applied ML models</li>
+      <li><b>Tools &amp; Practices:</b> Git/GitHub, Postman, Celery, Agile/Scrum, Kanban, sprint planning, OOP &amp; DSA</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2 class="section-title">Academic Projects</h2>
+    <div class="entry">
+      <div class="entry-head"><span class="entry-title">MediScan — Digital Image Processing for Medical Diagnostics</span></div>
+      <ul>
+        <li>Built an X-ray image processing system applying Digital Image Processing (DIP) algorithms and AI models to support enhanced disease estimation.</li>
+        <li>Implemented noise reduction, enhancement, and feature-extraction algorithms using Python and the Pillow library for backend image handling and optimization.</li>
+      </ul>
+      <div class="stack">Tech Stack: Python, Digital Image Processing (DIP), Pillow, AI/ML models</div>
     </div>
-
-    <div class="section-bar">SKILL</div>
-    <div class="content-block">
-        <ul>
-            <li><b>Front-End Development:</b> HTML5, CSS3, JavaScript, React.js, Bootstrap</li>
-            <li><b>Backend & APIs:</b> Python, Flask, Django REST API, PostgreSQL</li>
-            <li><b>Cloud & CRM:</b> Salesforce, Azure fundamentals</li>
-            <li><b>Agile & Collaboration:</b> Scrum, Kanban, sprint planning</li>
-            <li><b>OOP & DSA:</b> Applied in academic projects</li>
-        </ul>
+    <div class="entry">
+      <div class="entry-head"><span class="entry-title">Krishi Sakhi — Personalized Farming AI Assistant</span></div>
+      <ul>
+        <li>Designed a mobile-first AI assistant for Indian smallholder farmers, delivering personalized crop-cycle guidance through voice, text, and image inputs.</li>
+        <li>Integrated a generative AI engine (Gemini) with ML models to provide real-time advisories on soil health, crop care, and local market trends.</li>
+        <li>Developed a scalable backend using Django REST API, PostgreSQL/PostGIS, and Celery for asynchronous task processing.</li>
+      </ul>
+      <div class="stack">Tech Stack: Django REST API, Python, Gemini AI, PostgreSQL/PostGIS, Celery</div>
     </div>
+  </section>
 
-    <div class="section-bar">CERTIFICATIONS</div>
-    <div class="content-block">
-        <div class="cert-row"><span>• <b>AZ-104: Managing Azure Identity, Governance, and Storage</b></span><span class="date-col">Feb 24, 2026</span></div>
-        <div class="cert-row"><span>• <b>Introduction to DevOps</b></span><span class="date-col">Dec 18, 2025</span></div>
-        <div class="cert-row"><span>• <b>Generative AI:Introduction and Application</b></span><span class="date-col">Oct 22 2025</span></div>
-        <div class="cert-row"><span>• <b>Introduction to Cloud Computing</b></span><span class="date-col">Sep 26, 2025</span></div>
-        <div class="cert-row"><span>• <b>CCNA: Introduction to Networks</b></span><span class="date-col">Apr 30, 2025</span></div>
-        <div class="cert-row"><span>• <b>Agile Software Development</b></span><span class="date-col">Dec 1, 2024</span></div>
-        <div class="cert-row"><span>• <b>Cybersecurity Essentials</b></span><span class="date-col">May 25, 2024</span></div>
+  <section>
+    <h2 class="section-title">Internship</h2>
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">Website Design &amp; Development Intern</span>
+        <span class="entry-date">May 2026 – Jun 2026</span>
+      </div>
+      <div class="entry-org">Internship Studio</div>
+      <ul>
+        <li>Built and deployed responsive web interfaces using React.js, Bootstrap, and modern CSS techniques, applying mobile-first design principles for scalable front-end solutions.</li>
+        <li>Practiced UI/UX fundamentals and component-based architecture through hands-on project work; certified ISO ISWDI3298659.</li>
+      </ul>
     </div>
+  </section>
 
-    <div class="section-bar">TRAINING</div>
-    <div class="content-block">
-        <div class="item-block">
-            <b>Salesforce Training – SmartBridge (Powered by TCS)</b>
-            <ul>
-                <li>Completed a 3-month online training program conducted by TCS professionals.</li>
-                <li>Hands-on practice via Trailhead challenges; successfully cleared Phase 1 and Phase 2.</li>
-                <li>Built skills in CRM, automation tools, and cloud-based solutions.</li>
-            </ul>
-        </div>
+  <section>
+    <h2 class="section-title">Certifications</h2>
+    <div class="cert-row"><span><b>AZ-104: Microsoft Azure Administrator</b> — Coursera (Pact Program)</span><span class="date-col">Feb 2026</span></div>
+    <div class="cert-row"><span><b>Generative AI: Introduction and Application</b></span><span class="date-col">Oct 2025</span></div>
+    <div class="cert-row"><span><b>Introduction to Cloud Computing</b></span><span class="date-col">Sep 2025</span></div>
+    <div class="cert-row"><span><i>Additional: Introduction to DevOps, CCNA (Introduction to Networks), Agile Software Development, Cybersecurity Essentials</i></span></div>
+  </section>
 
-        <div class="item-block">
-            <b>Web Development Training – iStudio</b>
-            <ul>
-                <li>Learned responsive design, UI/UX fundamentals, and modern frameworks. Built practice projects applying HTML5, CSS3, JavaScript, and Bootstrap.</li>
-            </ul>
-        </div>
-
-        <div class="item-block">
-            <b>Cisco Cybersecurity Training – BSNL BRBRAITT (Cisco Networking Academy)</b>
-            <ul>
-                <li>Completed 70 hours of intensive cybersecurity training (2 weeks).</li>
-                <li>Developed strong foundations in cybersecurity concepts, network security, and threat mitigation.</li>
-                <li>Training conducted at BSNL's BRBRAITT, Jabalpur, under Cisco Networking Academy.</li>
-            </ul>
-        </div>
+  <section>
+    <h2 class="section-title">Training</h2>
+    <div class="entry">
+      <div class="entry-head"><span class="entry-title">Salesforce Training</span></div>
+      <div class="entry-org">SmartBridge (Powered by TCS)</div>
+      <ul>
+        <li>Completed a 3-month program covering CRM, automation tools, and cloud-based solutions; cleared Trailhead Phase 1 and Phase 2 challenges.</li>
+      </ul>
     </div>
-
-    <div class="section-bar">INTERNSHIP</div>
-    <div class="content-block">
-        <div class="item-block">
-            <b>Website Design & Development Internship – Internship Studio</b> <span class="sub-text">(May 15, 2026 – Jun 19, 2026)</span>
-            <ul>
-                <li>Learned responsive design, UI/UX fundamentals, and modern frameworks. Built practice projects applying HTML5, CSS3, JavaScript, and Bootstrap. Applied React.js, Bootstrap, and modern CSS techniques for scalable front-end solutions.</li>
-                <li>Certification No: ISWDI3298659 (ISO Certified).</li>
-            </ul>
-        </div>
+    <div class="entry">
+      <div class="entry-head"><span class="entry-title">Cisco Cybersecurity Training</span></div>
+      <div class="entry-org">BSNL BRBRAITT (Cisco Networking Academy)</div>
+      <ul>
+        <li>Completed 70 hours of intensive training in network security concepts and threat mitigation.</li>
+      </ul>
     </div>
+  </section>
 
-    <div class="section-bar">ACADMIC PROJECTS</div>
-    <div class="content-block">
-        <div class="item-block">
-            <b>MediScan – Digital Image Processing for Medical Diagnostics</b> Developed an X-ray image processing system using DIP algorithms and AI to enhance disease estimation.
-            <ul>
-                <li>Applied DIP algorithms for data extraction and X-ray image processing</li>
-                <li>Utilized Python and Pillow for backend image handling and optimization</li>
-            </ul>
-        </div>
-
-        <div class="item-block">
-            <b>Krishi Sakhi – Personalized Farming AI Assistant</b> Designed a mobile-first AI companion for Indian smallholder farmers, offering hyper-personalized crop cycle support through voice, text, and image inputs.
-            <ul>
-                <li>Integrated AI engine (Gemini + ML models) for personalized crop, soil, and market advisories</li>
-                <li>Developed backend with Django REST API, PostgreSQL/PostGIS, and Celery for scalable services</li>
-            </ul>
-        </div>
+  <section>
+    <h2 class="section-title">Education</h2>
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">B.Tech, Computer Science and Design (CSD)</span>
+        <span class="entry-date">2022 – 2026</span>
+      </div>
+      <div class="entry-org">Gyan Ganga Institute of Technology and Sciences, Jabalpur</div>
+      <p style="margin-top:4px;">CGPA: 8.32</p>
     </div>
+    <p style="margin-top:8px;">Senior Secondary (12th): 67% — SVDJ Gurukul School, Jabalpur (2022) &nbsp;|&nbsp; Secondary (10th): 71% — St. Augustine School, Jabalpur (2020)</p>
+  </section>
 </div>
 
-<a href="Kartik.pdf" download="Kartik_Pawar_Resume.pdf"><button>Print Resume</button></a>
+<div class="actions">
+  <a href="Kartik.docx" download="KartikPawar_Resume.docx"><button>Print Resume</button></a>
+</div>
 
 </body>
 </html>
